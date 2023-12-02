@@ -1,0 +1,29 @@
+class Solution {
+    public int countCharacters(String[] words, String chars) {
+        int[] count = new int[26];
+
+        for(int i = 0; i<chars.length(); i++){
+            count[chars.charAt(i)-'a']++;
+        }
+
+        int result = 0;
+
+        for(String s :words){
+            if(res(s,count))
+                result += s.length();
+        }
+        return result;
+    }
+
+    boolean res(String s, int[] count){
+        int[] c = new int[26];
+        for(int i = 0; i<s.length(); i++){
+            int x = s.charAt(i)-'a';
+            c[x]++;
+            if(c[x] > count[x]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
